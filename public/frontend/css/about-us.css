@@ -1,0 +1,33 @@
+.about-us {
+  margin: 2em;
+}
+
+/* .about-img {
+  float: right;
+  margin-right: 1em;
+} */
+.about-img-img{
+  width: 50%;
+  float: right;
+  margin: 1ems;
+  
+}
+
+.about-content {
+  margin-left: 1em;
+  color: #443a2e;
+  text-align: justify;
+}
+
+.about-content h2 {
+  font-size: 25px;
+}
+
+.about-content h2 span {
+  font-size: 30px;
+}
+
+
+.btn-submit {
+  font-size: 0.7em;
+}
