@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('serial_no')->nullable();
             $table->unsignedBigInteger('imei_no')->nullable();
             $table->string('problem')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('images')->nullable();
             $table->integer('charge')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->timestamps();

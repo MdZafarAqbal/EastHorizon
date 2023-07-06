@@ -146,7 +146,7 @@ unset($__errorArgs, $__bag); ?>
                     <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger"></span></label>
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images[]" multiple>
+                            <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images">
                         </span>          
                     </div>
                 </div>

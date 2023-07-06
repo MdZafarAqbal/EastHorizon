@@ -9,7 +9,7 @@
         </div>
 
         <div class="container mt-4">
-            <form method="post" action="{{ route('repairs.update', $repair->id) }}">
+            <form method="post" action="{{ route('repair.update', $repair->id) }}">
                 @method('patch')
                 @csrf
                 <div class="mb-3">
@@ -69,10 +69,20 @@
                         <span class="text-danger text-left">{{ $errors->first('charge') }}</span>
                     @endif
                 </div>
-                
+                <div class="form-group">
+                    <label for="inputPhoto" class="col-form-label">Photo</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <a id="lfm" data-input="thumbnail1" data-preview="holder_tablet" class="btn btn-primary lfm">
+                            <i class="fa fa-picture-o"></i> Choose
+                            </a>
+                        </span>
+                        <input id="thumbnail1" class="form-control" type="text" name="images" value="{{$repair->images}}">
+                    </div>
+                </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ route('repairs.index') }}" class="btn btn-default">Cancel</button>
+                <a href="{{ route('repair.index') }}" class="btn btn-default">Cancel</button>
             </form>
         </div>
 

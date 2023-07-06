@@ -17,7 +17,7 @@ class Repair extends Model
         'serial_no',
         'imei_no',
         'problem',
-        'photo',
+        'images',
         'charge',
     ];
 }

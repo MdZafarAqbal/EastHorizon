@@ -25,7 +25,7 @@
                 <th>Serial No</th>
                 <th>Problem</th>
                 <th>Charges</th>
-                <th>Status</th>
+                <th>Images</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -39,7 +39,7 @@
                 <th>Serial No</th>
                 <th>Problem</th>
                 <th>Charges</th>
-                <th>Status</th>
+                <th>Images</th>
                 <th>Action</th>
               </tr>
             </tfoot>
@@ -55,7 +55,7 @@
                   <td>{{$repair->serial_no}}</td>
                   <td>{{$repair->problem}}</td>                 
                   <td>{{$repair->charges}}</td>
-                  <td>{{$repair->status}}</td>
+                  <td><img src="{{('/images/products'.$repair->images)}} " class="img-fluid zoom" style="max-width:80px" alt="{{$repair->images}}"></td>
                   <td>
                       <a href="{{route('repair.edit',$repair->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                       <form method="POST" action="{{route('repair.destroy',[$repair->id])}}">
@@ -68,7 +68,7 @@
               @endforeach
             </tbody>
           </table>
-          {!! $countries->withQueryString()->links('pagination::bootstrap-5') !!}
+          {!! $repairs->withQueryString()->links('pagination::bootstrap-5') !!}
           
         @else
           <h6 class="text-center">No repair product found!!! </h6>
@@ -94,7 +94,6 @@
   <script src="{{asset('admin_panel/vendor/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('admin_panel/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
   <!-- Page level custom scripts -->
   <script src="{{asset('admin_panel/js/demo/datatables-demo.js')}}"></script>
   <script>
@@ -143,4 +142,13 @@
           })
       })
   </script>
+  <style>
+    .zoom {
+        transition: transform .2s; /* Animation */
+      }
+
+      .zoom:hover {
+        transform: scale(3.2);
+      }
+  </style>
 @endpush

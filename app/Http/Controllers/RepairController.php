@@ -80,7 +80,7 @@ class RepairController extends Controller
      */
     public function edit(Repair $repair) 
     {
-        return view('admin_panel.repairs.edit', [
+        return view('admin_panel.repair.edit', [
             'repair' => $repair            
         ]);
         

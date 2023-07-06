@@ -1,15 +1,18 @@
-<?php $__env->startSection('country','East Horizon || Repair Create'); ?>
-
 <?php $__env->startSection('main-content'); ?>
 
 <div class="bg-light p-4 rounded">
-        <h1>Add Repair Products</h1>
+        <h1>Update repair products</h1>
+        <div class="lead">
+
+        </div>
+
         <div class="container mt-4">
-            <form method="POST" action="<?php echo e(route('repair.store')); ?>">
+            <form method="post" action="<?php echo e(route('repair.update', $repair->id)); ?>">
+                <?php echo method_field('patch'); ?>
                 <?php echo csrf_field(); ?>
                 <div class="mb-3">
-                    <label for="user_name" class="form-label">User Name</label>
-                    <input value="<?php echo e(old('user_name')); ?>" 
+                    <label for="user_name" class="form-label">Name</label>
+                    <input value="<?php echo e($repair->user_name); ?>" 
                         type="text" 
                         class="form-control" 
                         name="user_name" 
@@ -21,8 +24,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="mobile_no" class="form-label">Mobile No</label>
-                    <input value="<?php echo e(old('mobile_no')); ?>"
-                        type="number" 
+                    <input value="<?php echo e($repair->mobile_no); ?>"
+                        type="mobile_no" 
                         class="form-control" 
                         name="mobile_no" 
                         placeholder="Mobile Number" required>
@@ -31,19 +34,8 @@
                     <?php endif; ?>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email Id</label>
-                    <input value="<?php echo e(old('email')); ?>"
-                        type="number" 
-                        class="form-control" 
-                        name="email" 
-                        placeholder="Email Id" required>
-                    <?php if($errors->has('email')): ?>
-                        <span class="text-danger text-left"><?php echo e($errors->first('email')); ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="mb-3">
                     <label for="product_name" class="form-label">Product Name</label>
-                    <input value="<?php echo e(old('product_name')); ?>"
+                    <input value="<?php echo e($repair->product_name); ?>"
                         type="text" 
                         class="form-control" 
                         name="product_name" 
@@ -52,10 +44,9 @@
                         <span class="text-danger text-left"><?php echo e($errors->first('product_name')); ?></span>
                     <?php endif; ?>
                 </div>
-
                 <div class="mb-3">
                     <label for="serial_no" class="form-label">Serial No</label>
-                    <input value="<?php echo e(old('serial_no')); ?>"
+                    <input value="<?php echo e($repair->serial_no); ?>"
                         type="text" 
                         class="form-control" 
                         name="serial_no" 
@@ -64,52 +55,32 @@
                         <span class="text-danger text-left"><?php echo e($errors->first('serial_no')); ?></span>
                     <?php endif; ?>
                 </div>
-                <div class="mb-3">
-                    <label for="imei_no" class="form-label">IMEI No</label>
-                    <input value="<?php echo e(old('imei_no')); ?>"
-                        type="text" 
-                        class="form-control" 
-                        name="imei_no" 
-                        placeholder="IMEI No" required>
-                    <?php if($errors->has('imei_no')): ?>
-                        <span class="text-danger text-left"><?php echo e($errors->first('imei_no')); ?></span>
-                    <?php endif; ?>
-                </div>
 
                 <div class="mb-3">
-                    <label for="problem" class="form-label">Problem</label>
-                    <input value="<?php echo e(old('problem')); ?>"
-                        type="text" 
-                        class="form-control" 
-                        name="problem" 
-                        placeholder="Problem" required>
-                    <?php if($errors->has('problem')): ?>
-                        <span class="text-danger text-left"><?php echo e($errors->first('problem')); ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="mb-3">
-                    <label for="charge" class="form-label">Charges</label>
-                    <input value="<?php echo e(old('charge')); ?>"
+                    <label for="charge" class="form-label">Charge</label>
+                    <input value="<?php echo e($repair->charge); ?>"
                         type="text" 
                         class="form-control" 
                         name="charge" 
-                        placeholder="Charges" required>
+                        placeholder="Charge" required>
                     <?php if($errors->has('charge')): ?>
                         <span class="text-danger text-left"><?php echo e($errors->first('charge')); ?></span>
                     <?php endif; ?>
                 </div>
-
                 <div class="form-group">
-                    <label for="inputPhoto" class="col-form-label">Photo </label>
+                    <label for="inputPhoto" class="col-form-label">Photo</label>
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <input type="file" id="input-file-now-custom-3" class="form-control m-2" name="images" >
-                        </span>          
+                            <a id="lfm" data-input="thumbnail1" data-preview="holder_tablet" class="btn btn-primary lfm">
+                            <i class="fa fa-picture-o"></i> Choose
+                            </a>
+                        </span>
+                        <input id="thumbnail1" class="form-control" type="text" name="images" value="<?php echo e($repair->images); ?>">
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save</button>
-                <a href="<?php echo e(route('repair.index')); ?>" class="btn btn-default">Back</a>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="<?php echo e(route('repair.index')); ?>" class="btn btn-default">Cancel</button>
             </form>
         </div>
 
@@ -127,4 +98,4 @@
     $('#lfm').filemanager('image');
 </script>
 <?php $__env->stopPush(); ?>
-<?php echo $__env->make('admin_panel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\East-Horizon\resources\views/admin_panel/repair/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin_panel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\East-Horizon\resources\views/admin_panel/repair/edit.blade.php ENDPATH**/ ?>

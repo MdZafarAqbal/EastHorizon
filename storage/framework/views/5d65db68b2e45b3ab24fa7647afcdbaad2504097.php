@@ -24,7 +24,7 @@
                 <th>Serial No</th>
                 <th>Problem</th>
                 <th>Charges</th>
-                <th>Status</th>
+                <th>Images</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -38,7 +38,7 @@
                 <th>Serial No</th>
                 <th>Problem</th>
                 <th>Charges</th>
-                <th>Status</th>
+                <th>Images</th>
                 <th>Action</th>
               </tr>
             </tfoot>
@@ -54,7 +54,7 @@
                   <td><?php echo e($repair->serial_no); ?></td>
                   <td><?php echo e($repair->problem); ?></td>                 
                   <td><?php echo e($repair->charges); ?></td>
-                  <td><?php echo e($repair->status); ?></td>
+                  <td><img src="<?php echo e(('/images/products'.$repair->images)); ?> " class="img-fluid zoom" style="max-width:80px" alt="<?php echo e($repair->images); ?>"></td>
                   <td>
                       <a href="<?php echo e(route('repair.edit',$repair->id)); ?>" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                       <form method="POST" action="<?php echo e(route('repair.destroy',[$repair->id])); ?>">
@@ -67,7 +67,7 @@
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
           </table>
-          <?php echo $countries->withQueryString()->links('pagination::bootstrap-5'); ?>
+          <?php echo $repairs->withQueryString()->links('pagination::bootstrap-5'); ?>
 
           
         <?php else: ?>
@@ -94,7 +94,6 @@
   <script src="<?php echo e(asset('admin_panel/vendor/datatables/jquery.dataTables.min.js')); ?>"></script>
   <script src="<?php echo e(asset('admin_panel/vendor/datatables/dataTables.bootstrap4.min.js')); ?>"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
   <!-- Page level custom scripts -->
   <script src="<?php echo e(asset('admin_panel/js/demo/datatables-demo.js')); ?>"></script>
   <script>
@@ -143,6 +142,15 @@
           })
       })
   </script>
+  <style>
+    .zoom {
+        transition: transform .2s; /* Animation */
+      }
+
+      .zoom:hover {
+        transform: scale(3.2);
+      }
+  </style>
 <?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('admin_panel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\East-Horizon\resources\views/admin_panel/repair/index.blade.php ENDPATH**/ ?>

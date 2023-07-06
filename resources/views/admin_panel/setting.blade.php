@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
           <label for="short_des" class="col-form-label">Short Description <span class="text-danger">*</span></label>
-          @if ($data->short_des)
+          @if ($data->short_des ?? None)
             <textarea class="form-control" id="quote" name="short_des">{{$data->short_des}}</textarea>
           @else
             <textarea class="form-control" id="quote" name="short_des">Short Description</textarea>
@@ -42,7 +42,6 @@
           <input id="thumbnail1" class="form-control" type="text" name="logo" value="{{$data->logo}}">
         </div>
         <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
-
           @error('logo')
           <span class="text-danger">{{$message}}</span>
           @enderror
