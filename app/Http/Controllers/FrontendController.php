@@ -158,7 +158,7 @@ class FrontendController extends Controller
 
   public function product_search(Request $request) {
     $products = Product::where('status', 'active')->where(function(Builder $query) use ($request) {
-      $query->where('name', 'like', '%'.$request->search.'%')->orwhere('sci_name', 'like', '%'.$request->search.'%')->orwhere('other_name', 'like', '%'.$request->search.'%');
+      $query->where('name', 'like', '%'.$request->search.'%');
     })->get();
 
     $categories = Category::get();

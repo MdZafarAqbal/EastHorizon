@@ -10,8 +10,12 @@
 <div id="rolla" class="store-location">
   <h2>Naif.</h2>
   <p>Monday - Sunday | 10:30 AM - 10:30 PM</p>
+  <p> Friday | 5.00 PM - 10.30 PM
   <p>naif road, Dubai, UAE</p>
-  <div style="width: 40%"><iframe src="https://goo.gl/maps/am2T2F3HPsgHnM139" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div> 
+  <div style="width: 40%">
+    <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=east horizon computer&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://thepasswordgame.com/">Password Game</a></div><style>.mapouter{position:relative;text-align:right;width:600px;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:600px;height:400px;}.gmap_iframe {width:600px!important;height:400px!important;}</style></div>
+      
+  </div> 
 </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('frontend.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\East-Horizon\resources\views/frontend/pages/contact.blade.php ENDPATH**/ ?>
