@@ -31,21 +31,23 @@ class WishlistController extends Controller
       ]);
 
       $product = Product::where('id', $request->id)->first();
-      dd($request->all());
+      //dd($request->all());
       $user_id = auth()->user()->id;
 
         
-            $wishlist = new Wishlist;
-            $wishlist->user_id = $user_id;
-            $wishlist->product_id = $request->id;
-
-            $wishlist->save();
-
-            $fav_counts = Wishlist::where('user_id', $user_id)->count('product_id');
+      $wishlist = new Wishlist;
+      $wishlist->user_id = $user_id;
+      $wishlist->product_id = $request->id;
       
-            request()->session()->flash('success','Product successfully added to wishlist');  
-            return $fav_counts;
-          }  
+
+
+      $wishlist->save();
+
+      $fav_counts = Wishlist::where('user_id', $user_id)->count('product_id');
+
+      request()->session()->flash('success','Product successfully added to wishlist');  
+      return $fav_counts;
+    }  
           
     public function wishlist_delete(Request $request) {
       $wishlist = Wishlist::where('product_id', $request->id)->delete();

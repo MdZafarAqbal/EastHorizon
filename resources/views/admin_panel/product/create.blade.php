@@ -327,8 +327,5 @@
     
   })
   
-
-
-  
 </script>
 @endpush

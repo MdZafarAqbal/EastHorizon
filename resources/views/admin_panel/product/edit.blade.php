@@ -70,7 +70,6 @@
             @foreach($product['categories'] as $pro_cate )
             
             <tr id="{{$pro_cate->id}}-tr">
-              <!-- <td class="td-cat-title">{{$pro_cate->id}}</td> -->
                 <td class="td-cat-title">{{$pro_cate->name}}</td>               
                 <td>
                   @foreach($product['subcat'] as $pro_subcate )
@@ -78,10 +77,7 @@
                       {{$pro_subcate->name}}
                     @endif 
                   @endforeach 
-                </td>
-                <!--<td>-->
-                <!--  <button type="button" onclick="proCatDlt(<?=$product->id?>,<?=$pro_cate->id?>)"><i class="fas fa-trash-alt"></i></button>-->
-                <!--</td>           -->
+                </td>         
               </tr>
             @endforeach
           </tbody>
@@ -171,7 +167,7 @@
             <tr>              
               <th>Id</th>
               <th>image</th>                            
-              <th>Action</th>
+              <!-- <th>Action</th> -->
             </tr>
           </thead>
           <tbody>
@@ -179,13 +175,13 @@
               <tr>
                 <td>{{$image->id}}</td>                                    
                 <td>{{$image->name}} </td>                        
-                <td class="center">                                                                                 
+                <!-- <td class="center">                                                                                 
                   <form method="get" id="deletImage" action="{{url('admin/product/delete-images',[$image->id])}}">
                     @csrf
                     @method('delete')
                     <button class="btn btn-danger btn-sm dltBtn1" form="deletImage" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>  
                   </form>
-                </td>                        
+                </td>                         -->
               </tr>                    
             @endforeach                         
           </tbody>
@@ -203,8 +199,9 @@
         <div class="form-group mb-3">
         
         </div>
+        <button class="btn btn-success" id="main" type="submit">Update</button>
       </form>
-      <button class="btn btn-success" form="main" type="submit">Update</button>
+      
     </div>
   </div>
 @endsection
@@ -393,19 +390,7 @@
     })
   });
   
-  function proCatDlt(productId, catId){
-    
-  $("#" + catId + "-tr").remove(); 
-  $.ajax({
-    url:'/admin/product/delete-category/' + catId,
-    type:"get",
-    data:{
-        productId:productId
-    },
-    success:function(response){
-     
-    }});
-  }
+  
   $.each($('.td-cat-title'), (key, value) => {
     let el = document.getElementById(value.innerText);
     if(el !== undefined) {

@@ -189,8 +189,9 @@ class ProductController extends Controller
       $product=Product::findOrFail($id);
     
       $data=$request->all();
+    //   dd($request->all());
      
-      $size=$request->input('size');
+    //   $size=$request->input('size');
      
       $status=$product->fill($data)->save();
       
@@ -278,6 +279,7 @@ class ProductController extends Controller
   public function destroy($id)
   {
     $product=Product::findOrFail($id);
+    // dd($id);
     $status=$product->delete();
     
     if($status){
@@ -291,18 +293,18 @@ class ProductController extends Controller
  
 
   //delete Category
-  public function deleteCategory($id, Request $request){
-      $productCategory=ProductCategory::where('cat_id',  $id)->where('product_id', $request->productId);
-      $status=$productCategory->delete(); 
-      if($status){
-          request()->session()->flash('success','Product successfully deleted');
-      }
-      else{
-          request()->session()->flash('error','Error while deleting product');
-      }
+//   public function deleteCategory($id, Request $request){
+//       $productCategory=ProductCategory::where('cat_id',  $id)->where('product_id', $request->productId);
+//       $status=$productCategory->delete(); 
+//       if($status){
+//           request()->session()->flash('success','Product successfully deleted');
+//       }
+//       else{
+//           request()->session()->flash('error','Error while deleting product');
+//       }
   
-      //return redirect()->back();
-  }
+//       //return redirect()->back();
+//   }
 
   public function deleteBrand($id, Request $request){
     $productBrand=ProductBrand::where('brand_id',  $id)->where('product_id', $request->productId);

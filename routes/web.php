@@ -156,10 +156,10 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
     //import product
     Route::resource('/productImport','ProductImportController');
     //Repair
-    Route::resource('repair','RepairController');
+    Route::resource('/repair','RepairController');
 
     //Buyer
-    Route::resource('buying','BuyController');
+    Route::resource('/buying','BuyController');
     
     // Order
     Route::resource('/order','OrderController');

@@ -87,7 +87,6 @@ unset($__errorArgs, $__bag); ?>
             <?php $__currentLoopData = $product['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pro_cate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             
             <tr id="<?php echo e($pro_cate->id); ?>-tr">
-              <!-- <td class="td-cat-title"><?php echo e($pro_cate->id); ?></td> -->
                 <td class="td-cat-title"><?php echo e($pro_cate->name); ?></td>               
                 <td>
                   <?php $__currentLoopData = $product['subcat']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pro_subcate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -96,10 +95,7 @@ unset($__errorArgs, $__bag); ?>
 
                     <?php endif; ?> 
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
-                </td>
-                <!--<td>-->
-                <!--  <button type="button" onclick="proCatDlt(<?=$product->id?>,<?=$pro_cate->id?>)"><i class="fas fa-trash-alt"></i></button>-->
-                <!--</td>           -->
+                </td>         
               </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </tbody>
@@ -203,7 +199,7 @@ unset($__errorArgs, $__bag); ?>
             <tr>              
               <th>Id</th>
               <th>image</th>                            
-              <th>Action</th>
+              <!-- <th>Action</th> -->
             </tr>
           </thead>
           <tbody>
@@ -211,13 +207,13 @@ unset($__errorArgs, $__bag); ?>
               <tr>
                 <td><?php echo e($image->id); ?></td>                                    
                 <td><?php echo e($image->name); ?> </td>                        
-                <td class="center">                                                                                 
+                <!-- <td class="center">                                                                                 
                   <form method="get" id="deletImage" action="<?php echo e(url('admin/product/delete-images',[$image->id])); ?>">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('delete'); ?>
                     <button class="btn btn-danger btn-sm dltBtn1" form="deletImage" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>  
                   </form>
-                </td>                        
+                </td>                         -->
               </tr>                    
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                         
           </tbody>
@@ -242,8 +238,9 @@ unset($__errorArgs, $__bag); ?>
         <div class="form-group mb-3">
         
         </div>
+        <button class="btn btn-success" id="main" type="submit">Update</button>
       </form>
-      <button class="btn btn-success" form="main" type="submit">Update</button>
+      
     </div>
   </div>
 <?php $__env->stopSection(); ?>
@@ -430,19 +427,7 @@ unset($__errorArgs, $__bag); ?>
     })
   });
   
-  function proCatDlt(productId, catId){
-    
-  $("#" + catId + "-tr").remove(); 
-  $.ajax({
-    url:'/admin/product/delete-category/' + catId,
-    type:"get",
-    data:{
-        productId:productId
-    },
-    success:function(response){
-     
-    }});
-  }
+  
   $.each($('.td-cat-title'), (key, value) => {
     let el = document.getElementById(value.innerText);
     if(el !== undefined) {

@@ -19,7 +19,6 @@ return new class extends Migration
       $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
       $table->unsignedBigInteger('product_id');
       $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE');
-      $table->string('name', 100);
       $table->timestamps();
     });
   }

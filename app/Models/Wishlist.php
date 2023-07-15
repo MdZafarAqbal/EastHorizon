@@ -20,7 +20,7 @@ class Wishlist extends Model
    *
    * @var array
    */
-  protected $fillable = ['user_id','product_id','name'];
+  protected $fillable = ['user_id','product_id'];
   
   /**
    * Get the user that owns the wishlist.
